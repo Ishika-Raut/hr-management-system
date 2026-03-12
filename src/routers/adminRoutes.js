@@ -1,5 +1,5 @@
 import express from "express";
-import { createSuperAdmin } from "../utils/superAdmin.js";
+import { createSuperAdmin } from "../utils/admin.js";
 
 
 const adminRouter = express.Router();

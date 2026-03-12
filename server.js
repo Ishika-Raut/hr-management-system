@@ -1,7 +1,8 @@
 import dotenv from "dotenv";
 import app from "./app.js";
 import connectDB from "./src/configs/dbConfig.js";
-import { createSuperAdmin } from "./src/utils/superAdmin.js";
+import { createSuperAdmin } from "./src/utils/admin.js";
+//import { createAdmin } from "./src/utils/admin.js";
 
 dotenv.config();
 

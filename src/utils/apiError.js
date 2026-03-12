@@ -1,10 +1,8 @@
-function AppError(message, statusCode) 
+function AppError(message, statusCode, status) 
 {
   const error = new Error(message);
-
   error.statusCode = statusCode;
-  error.status = statusCode >= 400 && statusCode < 500 ? "fail" : "error";
-
+  error.status = status;
   return error;
 }
 
