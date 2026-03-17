@@ -1,9 +1,5 @@
-function AppError(message, statusCode, status) 
+export const AppError = (res, message, statusCode) =>
 {
-  const error = new Error(message);
-  error.statusCode = statusCode;
-  error.status = status;
-  return error;
+  return res.status(statusCode).json({success:false, message})
 }
 
-export default AppError;

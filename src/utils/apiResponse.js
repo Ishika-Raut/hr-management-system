@@ -1,11 +1,9 @@
-function AppResponse(res, statusCode, success, message, data = null, extra = null) 
+export const AppResponse = (res, statusCode, success, message, data = null, extra = null) => 
 {   
   return res.status(statusCode).json({
-    success,
+    success: true,
     message,
     data,
     extra
   });
 }
-
-export default AppResponse;

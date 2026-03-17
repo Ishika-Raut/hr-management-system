@@ -10,7 +10,7 @@ export const register = async (req, res, next) => {
     try 
     {
         const { name, email, password } = req.body;
-        if(name === null || email === null || password === null)
+        if(!name || !email || !password)
         {
             return AppError("All fields are required!", HTTP_STATUS.BAD_REQUEST);
         }
@@ -57,21 +57,21 @@ export const login = async(req, res, next) => {
     try 
     {
         const { email, password } = req.body;
-        if(email === null || password === null)
+        if(!email || !password)
         {
-            return AppError("All fields are required!", HTTP_STATUS.BAD_REQUEST);
+            return AppError(res, "All fields are required!", HTTP_STATUS.BAD_REQUEST);
         }
 
         const user = await User.findOne({email});
         if(!user)
         {
-            return AppError(`User does not exist with ${email}`, HTTP_STATUS.CONFLICT);
+            return AppError(res, `User does not exist with ${email}`, HTTP_STATUS.CONFLICT);
         }
 
         const matchedPassword = await bcrypt.compare(password, user.password)
         if(!matchedPassword)
         {
-             return AppError(`Invalid Password!`, HTTP_STATUS.UNAUTHORIZED);
+             return AppError(res, `Invalid Password!`, HTTP_STATUS.UNAUTHORIZED);
         }
 
         const token = generateToken(user._id, user.role);
