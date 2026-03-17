@@ -1,6 +1,7 @@
 import express from "express";
-import adminRouter from "./src/routers/adminRoutes.js";
+//import adminRouter from "./src/routers/adminRoutes.js";
 import authRouter from "./src/routers/authRouter.js";
+import employeeRouter from "./src/routers/employeeRoutes.js";
 
 
 const app = express();
@@ -8,9 +9,13 @@ const app = express();
 console.log("Express app created");
 
 // Middleware
+//parse body convert json string to js object parsing data coming from <div>
+//frontend sends data in string format hence we need to parse it
+//app.use(express.urlencoded({extend:true})) //parse form data coming from <form> - form data
 app.use(express.json());
 
-app.use("/api/admin", adminRouter);
-app.use("/api/user", authRouter);
+
+app.use("/api/auth", authRouter);
+app.use("/api", employeeRouter)
 
 export default app;
