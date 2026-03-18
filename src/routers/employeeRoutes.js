@@ -10,9 +10,9 @@ employeeRouter.use(authenticate);
 
 employeeRouter.post("/employee", authorize("admin"), addEmployee);
 employeeRouter.get("/employees", authorize("admin, hr"), getEmployees);
-employeeRouter.get("/employee/:id", authorize("admin, hr"), getEmployee);
+employeeRouter.get("/employee/:id", authorize("admin" , "hr"), getEmployee);
 employeeRouter.get("/employee/:id", authorize("employee"), getMyProfile);
-employeeRouter.delete("/employee/:id", authorize("admin, hr"), deleteEmployee);
-employeeRouter.put("/employee/:id", authorize("admin, hr"), updateEmployee);
+employeeRouter.delete("/employee/:id", authorize("admin" , "hr"), deleteEmployee);
+employeeRouter.put("/employee/:id", authorize("admin" , "hr"), updateEmployee);
 
 export default employeeRouter;
