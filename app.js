@@ -2,6 +2,7 @@ import express from "express";
 //import adminRouter from "./src/routers/adminRoutes.js";
 import authRouter from "./src/routers/authRouter.js";
 import employeeRouter from "./src/routers/employeeRoutes.js";
+import leaveRouter from "./src/routers/leaveRoutes.js";
 
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(express.json());
 
 
 app.use("/api/auth", authRouter);
-app.use("/api", employeeRouter)
+app.use("/api", employeeRouter);
+app.use("/api", leaveRouter);
 
 export default app;

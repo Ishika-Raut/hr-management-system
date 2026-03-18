@@ -7,6 +7,12 @@ const employeeSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, // Defines the field which will hold an ObjectId
         ref: "User",  //Specifies which model (collection) it references
         required:  true,
+        // creates a unique index in MongoDB.
+        // It guarantees:
+        //  No two Employee documents can have the same user value
+        //  Prevents duplicates at the database level
+        // It does NOT enforce foreign key constraints like SQL
+        // It does NOT ensure the referenced User actually exists
         unique: true,
     },
     department: {
