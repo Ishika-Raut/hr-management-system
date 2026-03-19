@@ -29,6 +29,7 @@ export const authenticate =(req, res, next) => {
         }
 
         const decode = jwt.verify(token, process.env.JWT_SECRET);
+        console.log("Decode data = ", decode);
         req.user = decode;
 
         next();
